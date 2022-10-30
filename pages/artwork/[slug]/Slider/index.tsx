@@ -7,11 +7,16 @@ import "slick-carousel/slick/slick-theme.css"
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import Loader from "../../../../components/Loader"
 
 type ArrowProps = {
   onClick?: MouseEventHandler
   show: boolean
   currentSlide?: number
+}
+
+type SliderProps = {
+  paintingsUrl: string[]
 }
 
 function NextArrow(props: ArrowProps) {
@@ -52,12 +57,9 @@ function PrevArrow(props: ArrowProps) {
   );
 }
 
-type SliderProps = {
-  paintingsUrl: string[]
-}
-
 const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
 
+  const [loading, setLoading] = useState<boolean>(true)
   const [show, setShow] = useState<boolean>(true)
   const [, setCurrentSlide] = useState<number>(0)
 
@@ -109,7 +111,11 @@ const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
           { paintingsUrl?.map((url, index) => 
             <Fragment key={index}>
               <div className="picture">
+              
+              {loading && <Loader/>}
+
                 <Image
+                    onLoad={()=> setLoading(false)}
                     src={url}
                     alt={'artwork'}
                     quality={10}
@@ -130,6 +136,9 @@ const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
               width: 150px;
               height: 150px;
               position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
             
             .slider .slick-slide {

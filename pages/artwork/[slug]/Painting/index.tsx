@@ -1,10 +1,11 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, useState } from "react"
 import Image from 'next/image'
 
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import ViewInArIcon from '@mui/icons-material/ViewInAr'
 
 import { device } from "../../../../lib/utils/devices"
+import Loader from "../../../../components/Loader"
 
 type Props = {
     imgUrl: string,
@@ -13,16 +14,19 @@ type Props = {
 
 const Painting: FunctionComponent<Props> = ({imgUrl, name}) => {
 
+    const [loading, setLoading] = useState<boolean>(true)
+
     return (
         <section className="container">
-            
             {/* <picture className="picture">
                     <source srcSet={imgUrl} type="image/jpeg" />
                     <img src={imgUrl} alt={name} style={{width: 'inherit'}}/>
             </picture> */}
 
             <div className="picture">
+                {loading && <Loader/>}
                 <Image
+                    onLoad={()=> setLoading(false)}
                     src={imgUrl}
                     alt={name}
                     quality={100}
@@ -43,6 +47,9 @@ const Painting: FunctionComponent<Props> = ({imgUrl, name}) => {
                     position: relative;
                     width: 550px;
                     height: 550px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 @media ${device.tablet} {
