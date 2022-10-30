@@ -40,7 +40,7 @@ const DropDown: FunctionComponent<Props> = (props) => {
             <h3>{title}</h3>
 
             <article id="toggle">
-                { show && children}
+                {children}
             </article>
             
             <style jsx>{`
@@ -52,9 +52,10 @@ const DropDown: FunctionComponent<Props> = (props) => {
                 }
 
                 article {
-                    max-height: ${show ? '500px' : '0px'};
                     overflow: hidden;
-                    transition: max-height .8s ease-in-out;
+                    max-height: ${show ? '100px' : '0px'};
+                    overflow: hidden;
+                    transition: max-height .3s ease-in-out;
                     padding: 0em 0.5em;  
                 }  
             `}</style>

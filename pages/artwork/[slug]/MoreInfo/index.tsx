@@ -17,7 +17,7 @@ const MoreInfo: FunctionComponent<Props> = (props) => {
     const {description, subject, medium, styles, materials} = props
 
     return (
-        <div className="container">
+        <article className="container">
 
             <DropDown 
                 title="DESCRIPTION"
@@ -66,7 +66,7 @@ const MoreInfo: FunctionComponent<Props> = (props) => {
                 }
             `}</style>
 
-        </div>
+        </article>
         
     )
 }

@@ -1,5 +1,5 @@
 import { NextPageContext } from "next"
-import { FunctionComponent } from "react"
+import { Fragment, FunctionComponent } from "react"
 
 import { getArtwork } from "../../../lib/api"
 import { ArtworkType } from "../../../lib/Interfaces"
@@ -28,7 +28,7 @@ export const Artwork: FunctionComponent<PageProps> = ({slug, artwork}) => {
         <div className="main-container">
           <section>
 
-            {/* TODO: replace imgUrl by artwork.imgUrl when cross origin fixed */}
+            {/* <Painting imgUrl={artwork.imageUrl} name={artwork.fullname} /> */}
 
             {slug == 0 && 
                 <Painting imgUrl={'/2997207-LEWATDHP-7.jpeg'} name={artwork.fullname} />}
@@ -45,9 +45,8 @@ export const Artwork: FunctionComponent<PageProps> = ({slug, artwork}) => {
               />
           </section>
 
-          <article>
-            <Order artwork={artwork}/>
-          </article>
+          <Order artwork={artwork}/>
+
         </div>
 
         <Slider paintingsUrl={paintingsMock}/>
@@ -57,22 +56,6 @@ export const Artwork: FunctionComponent<PageProps> = ({slug, artwork}) => {
             display: flex;
             flex-wrap: wrap;
           }
-
-          article {
-            margin-left: 4em;
-            width: 25vw;
-          }
-
-          @media (max-width: 375px) {
-            article {
-              flex-grow: 1;
-              margin-left: 0;
-              width: auto;
-              padding: 0 1em;
-            }
-
-          }
-
         `}
           
         </style>

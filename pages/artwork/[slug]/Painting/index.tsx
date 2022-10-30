@@ -14,18 +14,24 @@ type Props = {
 const Painting: FunctionComponent<Props> = ({imgUrl, name}) => {
 
     return (
-        <div className="container">
-            <section>
+        <section className="container">
+            
+            {/* <picture className="picture">
+                    <source srcSet={imgUrl} type="image/jpeg" />
+                    <img src={imgUrl} alt={name} style={{width: 'inherit'}}/>
+            </picture> */}
+
+            <div className="picture">
                 <Image
                     src={imgUrl}
                     alt={name}
                     quality={100}
                     fill
                     priority
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="`(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                 />
-            </section>
-
+            </div>
+            
             <div className="actions">
                 <span><VisibilityIcon fontSize="small"/>&nbsp; VIEW IN A ROOM</span>
                 <span><ViewInArIcon fontSize="small"/>&nbsp; ARIEW</span>
@@ -33,28 +39,32 @@ const Painting: FunctionComponent<Props> = ({imgUrl, name}) => {
            
             <style jsx>{`
 
-                section {
+                .picture {
                     position: relative;
-                    width: 560px;
-                    height: 557px;
-
+                    width: 550px;
+                    height: 550px;
                 }
 
                 @media ${device.tablet} {
-                    section {
+                    .picture {
+                        width: 400px;
                         height: 400px;
-                        width: 420px;
                     }
                 }
             
-
                 @media ${device.mobile} {
-                    section {
-                        height: 300px;
+                    .container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
                         width: 100vw;
                     }
-        
-                  }
+                    
+                    .picture {
+                        width: 90vw;
+                        height: 300px;
+                    }
+                }
             
                 .actions {
                     display: flex;
@@ -74,7 +84,7 @@ const Painting: FunctionComponent<Props> = ({imgUrl, name}) => {
             `}
                 
             </style>
-        </div>
+        </section>
     )
 }
 

@@ -17,10 +17,8 @@ type Props = {
 
 const Order: FunctionComponent<Props> = ({artwork}) => {
     
-    console.log('artwork', artwork)
-
     return (
-        <div className="container">
+        <section className="container">
 
             <div className="header">
                 <div className="fullname">View of {artwork?.fullname} </div>
@@ -101,7 +99,19 @@ const Order: FunctionComponent<Props> = ({artwork}) => {
                 .container {
                     display: flex;
                     flex-direction: column;
+                    margin-left: 4em;
+                    width: 25vw;
                 }
+
+                @media (max-width: 375px) {
+                    .container {
+                      flex-grow: 1;
+                      margin-left: 0;
+                      width: auto;
+                      padding: 0 1em;
+                    }
+        
+                  }
 
                 .header > .fullname {
                     color: #2E2E2D;
@@ -150,10 +160,8 @@ const Order: FunctionComponent<Props> = ({artwork}) => {
                 form {
                     display: flex;
                 }
-            `}
-                
-            </style>
-        </div>
+            `}</style>
+        </section>
     )
 }
 

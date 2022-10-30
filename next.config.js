@@ -7,6 +7,8 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.saatchiart.com',
+        pathname: '/saatchi/**',
+        port:''
       },
     ]
   }

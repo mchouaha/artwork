@@ -103,12 +103,12 @@ const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
 
   return (
 
-    <div className="container">
+    <section className="container">
           <Slider {...settings} className="slider">
 
           { paintingsUrl?.map((url, index) => 
             <Fragment key={index}>
-              <div className="item">
+              <div className="picture">
                 <Image
                     src={url}
                     alt={'artwork'}
@@ -117,15 +117,16 @@ const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
                     sizes="(max-width: 768px) 20vw,
                     (max-width: 1200px) 30vw,
                     50vw"
-                  />
+                  /> 
               </div>
+
             </Fragment>
           )}
                   
         </Slider>
 
         <style jsx global>{`
-            .item {
+            .picture {
               width: 150px;
               height: 150px;
               position: relative;
@@ -141,7 +142,7 @@ const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
             }
 
           `}</style>
-    </div>
+    </section>
 
   );
 }
