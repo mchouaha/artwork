@@ -106,7 +106,7 @@ const SimpleSlider: FunctionComponent<SliderProps> = ({paintingsUrl}) => {
     <div className="container">
           <Slider {...settings} className="slider">
 
-          { paintingsUrl.map((url, index) => 
+          { paintingsUrl?.map((url, index) => 
             <Fragment key={index}>
               <div className="item">
                 <Image
