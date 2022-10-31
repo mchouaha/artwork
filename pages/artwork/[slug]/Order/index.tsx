@@ -10,6 +10,7 @@ import { ArtworkType } from "../../../../lib/Interfaces"
 
 import Input from "../../../../components/Input"
 import Button from "../../../../components/Button"
+import { device } from "../../../../lib/utils/devices"
 
 type Props = {
     artwork: ArtworkType
@@ -103,10 +104,10 @@ const Order: FunctionComponent<Props> = ({artwork}) => {
                     width: 25vw;
                 }
 
-                @media (max-width: 375px) {
+                @media ${device.mobile} {
                     .container {
                       flex-grow: 1;
-                      margin-left: 0;
+                      margin: 0;
                       width: auto;
                       padding: 0 1em;
                     }
